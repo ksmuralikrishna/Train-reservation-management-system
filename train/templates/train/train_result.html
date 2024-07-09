@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Search Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Train Search Results</h2>
+        <div class="mb-3">
+            <a href="train_search.html" class="btn btn-primary">Back to Search</a>
+        </div>
+        {% if trains %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Train Name</th>
+                        <th>Source</th>
+                        <th>Destination</th>
+                        <th>Departure Time</th>
+                        <th>Arrival Time</th>
+                        <th>Seats Available</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for train in trains %}
+                        <tr>
+                            <td>{{ train.name }}</td>
+                            <td>{{ train.source }}</td>
+                            <td>{{ train.destination }}</td>
+                            <td>{{ train.departure_time|date:"d M Y, H:i" }}</td>
+                            <td>{{ train.arrival_time|date:"d M Y, H:i" }}</td>
+                            <td>{{ train.seats_available }}</td>
+                            <td>
+                                <a href="reservation_details.html" class="btn btn-success">Book</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="alert alert-warning" role="alert">
+                No trains found matching your criteria.
+            </div>
+        {% endif %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Search for Trains</h2>
+        <form id="train-search-form">
+            <div class="form-group">
+                <label for="source-station">From</label>
+                <input type="text" class="form-control" id="source-station" placeholder="Enter source station" >
+            </div>
+            <div class="form-group">
+                <label for="destination-station">To</label>
+                <input type="text" class="form-control" id="destination-station" placeholder="Enter destination station" >
+            </div>
+            <div class="form-group">
+                <label for="departure-date">Departure Date</label>
+                <input type="date" class="form-control" id="departure-date" >
+            </div>
+            <div class="form-group">
+                <label for="return-date">Return Date (Optional)</label>
+                <input type="date" class="form-control" id="return-date">
+            </div>
+            <div class="form-group">
+                <label for="passengers">Passengers</label>
+                <input type="number" class="form-control" id="passengers" value="1" min="1" >
+            </div>
+            <div class="form-group">
+                <label for="class">Class</label>
+                <select class="form-control" id="class">
+                    <option>Economy</option>
+                    <option>Business</option>
+                    <option>First Class</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="train-type">Train Type (Optional)</label>
+                <select class="form-control" id="train-type">
+                    <option>Any</option>
+                    <option>Express</option>
+                    <option>Local</option>
+                    <option>Superfast</option>
+                </select>
+            </div>
+
+            <a href="train_result.html" class="btn btn-primary">Search</a>
+            <a href="Login.html" class="btn btn-primary">back</a>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('navigateButton').onclick = function () {
+          window.location.href = 'train_result.html';
+        };
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

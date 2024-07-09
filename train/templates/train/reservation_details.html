@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Reservation Details</h2>
+        <div class="mb-3">
+            <a href="{% url 'train_search' %}" class="btn btn-primary">Back to Search</a>
+        </div>
+        {% if reservation %}
+            <div class="card">
+                <div class="card-header">
+                    <h4>Reservation Information</h4>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Reservation ID: {{ reservation.id }}</h5>
+                    <p class="card-text"><strong>Train Name:</strong> {{ reservation.train.name }}</p>
+                    <p class="card-text"><strong>Source:</strong> {{ reservation.train.source }}</p>
+                    <p class="card-text"><strong>Destination:</strong> {{ reservation.train.destination }}</p>
+                    <p class="card-text"><strong>Departure Time:</strong> {{ reservation.train.departure_time|date:"d M Y, H:i" }}</p>
+                    <p class="card-text"><strong>Arrival Time:</strong> {{ reservation.train.arrival_time|date:"d M Y, H:i" }}</p>
+                    <p class="card-text"><strong>Passenger Name:</strong> {{ reservation.user.username }}</p>
+                    <p class="card-text"><strong>Email:</strong> {{ reservation.user.email }}</p>
+                    <p class="card-text"><strong>Number of Seats:</strong> {{ reservation.seats }}</p>
+                    <p class="card-text"><strong>Total Price:</strong> ${{ reservation.total_price }}</p>
+                </div>
+            </div>
+        {% else %}
+            <div class="alert alert-warning" role="alert">
+                Reservation not found.
+            </div>
+        {% endif %}
+        <a href="pay.html" class="btn btn-success">Book</a>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
