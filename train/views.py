@@ -5,10 +5,11 @@ from django.contrib.auth.models import User
 def home(request):
     return render(request, 'train/home.html')
 
-def user_profile(request):
-    user = request.user
-    bookings = Reservation.objects.filter(user=user)
-    return render(request, 'train/user_profile.html', {'user': user, 'bookings': bookings})
+def train_search(request):
+    return render(request, 'train/train_search.html')
+
+def train_result(request):
+    return render(request, 'train/train_result.html')
 
 def admin_dashboard(request):
     trains = Train.objects.all()
@@ -21,12 +22,7 @@ def add_train(request):
         pass
     return render(request, 'train/add_train.html')
 
-def edit_train(request, train_id):
-    train = get_object_or_404(Train, id=train_id)
-    if request.method == 'POST':
-        # Handle form submission and edit train logic here
-        pass
-    return render(request, 'train/edit_train.html', {'train': train})
+
 
 def delete_train(request, train_id):
     train = get_object_or_404(Train, id=train_id)
